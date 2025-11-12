@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: mengine-bench-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: mengine-bench
+        image: jonrosario774/mengine-bench:latest
+        imagePullPolicy: Always
+        command: ["bash", "-c", "eval $(opam env) && python3 benchmark.py run; echo 'Benchmark finished, pod sleeping...' && sleep infinity"]
+        workingDir: /root/foss/mengine-benchmarks
+      restartPolicy: Never
+  backoffLimit: 0
+

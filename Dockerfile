@@ -52,5 +52,5 @@ RUN sed -i 's|"mengine_path":.*|"mengine_path": "/root/foss/mengine/main",|' con
 
 WORKDIR /root/foss/mengine-benchmarks
 RUN rm -f */results.json || true
-CMD bash -c "eval \$(opam env) && python3 benchmark.py run"
+CMD bash -c "eval \$(opam env) && python3 benchmark.py run && python3 benchmark.py plot"
 

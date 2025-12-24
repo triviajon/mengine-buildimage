@@ -6,11 +6,15 @@ spec:
   template:
     spec:
       containers:
-      - name: mengine-bench
-        image: jonrosario774/mengine-bench:latest
-        imagePullPolicy: Always
-        command: ["bash", "-c", "eval $(opam env) && python3 benchmark.py run && python3 benchmark.py plot; echo 'Benchmark finished, pod sleeping...' && sleep infinity"]
-        workingDir: /root/foss/mengine-benchmarks
+        - name: mengine-bench
+          image: ghcr.io/triviajon/mengine-bench:nov-13
+          imagePullPolicy: IfNotPresent
+          command:
+            [
+              "bash",
+              "-c",
+              "eval $(opam env) && python3 benchmark.py run && python3 benchmark.py plot; echo 'Benchmark finished, pod sleeping...' && sleep infinity",
+            ]
+          workingDir: /root/foss/mengine-benchmarks
       restartPolicy: Never
   backoffLimit: 0
-

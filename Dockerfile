@@ -30,8 +30,8 @@ RUN curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -
 
 # Clone repositories and build
 WORKDIR /root/foss
-RUN git clone https://github.com/triviajon/mengine.git && \
-    git clone https://github.com/triviajon/mengine-benchmarks.git && \
+RUN git clone --branch nov-13 --depth 1 https://github.com/triviajon/mengine.git && \
+    git clone --branch nov-13 --depth 1 https://github.com/triviajon/mengine-benchmarks.git && \
     git clone https://github.com/mit-plv/coqutil.git
 
 ENV PATH="/root/.opam/default/bin:${PATH}"
